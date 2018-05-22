@@ -144,7 +144,7 @@ apiRouter.post('/create_blog',authController.isAuthenticated, function (req,res)
 //getting project info routes
 //=============================================================================================
 //return an array of films
-apiRouter.get('/get_project', function (req,res){
+apiRouter.get('/get_project',authController.isAuthenticated, function (req,res){
 
   console.log('searching ' + req.query.project_type);
 
@@ -156,7 +156,7 @@ apiRouter.get('/get_project', function (req,res){
 });
 
 //return information for a specific film
-apiRouter.get('/get_project/:project_id', function (req,res){
+apiRouter.get('/get_project/:project_id',authController.isAuthenticated, function (req,res){
 
   var projectID = req.params.project_id;
   //get the film information
@@ -177,7 +177,7 @@ apiRouter.get('/get_project/:project_id', function (req,res){
 //=============================================================================================
 //get array of pictures
 //=============================================================================================
-apiRouter.get('/get_pictures', function (req,res){
+apiRouter.get('/get_pictures',authController.isAuthenticated, function (req,res){
 
   PictureGallery.find(function(err,picture){
     if (err) return res.send(err);
@@ -188,7 +188,7 @@ apiRouter.get('/get_pictures', function (req,res){
 //=============================================================================================
 //get array of blogs
 //=============================================================================================
-apiRouter.get('/get_blogs', function (req,res){
+apiRouter.get('/get_blogs',authController.isAuthenticated, function (req,res){
 
   Blog.find(function(err,blog){
     if (err) return res.send(err);
